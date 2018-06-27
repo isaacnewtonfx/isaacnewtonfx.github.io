@@ -3,17 +3,20 @@ $(document).ready(function () {
 
 var currencyListHtml = "";
 
+	$("#output").text("Loading currencies...");
+
 	$.ajax({
 	        type: 'GET',
 	        url: "https://free.currencyconverterapi.com/api/v5/currencies",
 	        data: {},
 	        dataType: 'json', 
 	        success: function(response) {	
-
+	        	$("#output").text("Ready...");
 
 				var request = window.indexedDB.open("AppDB", 1);
 				request.onerror = function(event) {
 						console.log("IDBrequest Error")
+						$("#output").text("A problem occured, refresh browser...");
 				};
 
 
@@ -59,6 +62,7 @@ var currencyListHtml = "";
 	        },
 	        failure: function(){
 	             console.log("failed");
+	             $("#output").text("A problem occured, refresh browser...");
 	        }
 
 	 });
@@ -69,7 +73,9 @@ var currencyListHtml = "";
 		currencyFrom  = $('#select-from').find(":selected").val();
 		currencyTo    = $('#select-to').find(":selected").val();
 		convertSymbol = currencyFrom + '_' + currencyTo;
+		amount 		  = parseFloat($('#amount').val());
 
+		$("#output").text("Converting...");
 		$.ajax({
 	        type: 'GET',
 	        url: `https://free.currencyconverterapi.com/api/v5/convert?q=${convertSymbol}&compact=y`,
@@ -78,17 +84,18 @@ var currencyListHtml = "";
 	        success: function(response) {
 
 	        	result = response[convertSymbol];
-	        	val = result.val;
+	        	rate = parseFloat(result.val);
+	        	converted = amount * rate;
 
 	        	//set results to output display
-	        	$("#output").val(val);
+	        	$("#output").text(converted);
 
 	        },
 	        complete: function() {
 	        	//console.log("complete");				       
 	        },
 	        failure: function(){
-	             console.log("failed");
+	             $("#output").text("Failed...");
 	        }
 
 	 });
