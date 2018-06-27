@@ -7,7 +7,10 @@ $(document).ready(function () {
 			console.log("Service Worker Registered"); 
 
 			if (reg.waiting) {
-		      console.log("sw is waiting");
+
+				console.log("sw is skipping waiting");
+				self.skipWaiting();
+		      	
 		      return;
 		    }
 
