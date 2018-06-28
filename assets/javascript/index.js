@@ -4,23 +4,23 @@ $(document).ready(function () {
 // ==============Registering the Service worker=============
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.register('/sw.js').then(function(reg) { 
-			console.log("Service Worker Registered"); 
+			//console.log("Service Worker Registered"); 
 
 			if (reg.waiting) {
 
-				console.log("sw is skipping waiting");
+				//console.log("sw is skipping waiting");
 				self.skipWaiting();
 		      	
 		      return;
 		    }
 
 		    if (reg.installing) {
-		      console.log("sw is installing");
+		      //console.log("sw is installing");
 		      return;
 		    }
 
 		    if (reg.active) {
-		      console.log("sw is active");
+		      //console.log("sw is active");
 		      return;
 		    }
 
@@ -49,15 +49,13 @@ $(document).ready(function () {
 
 					var request = window.indexedDB.open("AppDB", 1);
 					request.onerror = function(event) {
-							console.log("IDBrequest Error")
+							//console.log("IDBrequest Error")
 							$("#output").text("A problem occured, refresh browser...");
 					};
 					request.onsuccess = function(event) {
 
-					  console.log("IDBrequest Success");
+					  //console.log("IDBrequest Success");
 
-
-					  //check whether the select controls are populated
 					  var db = event.target.result;
 					  var currencyObjectStore = db.transaction("Currencies", "readwrite").objectStore("Currencies");
 					  var indexID = currencyObjectStore.index("id");
@@ -88,7 +86,7 @@ $(document).ready(function () {
 
 					request.onupgradeneeded = function(event) {
 
-						console.log("IDBrequest onupgradeneeded");
+						//console.log("IDBrequest onupgradeneeded");
 
 					  var db = event.target.result;
 					  objectStore = db.createObjectStore("Currencies", { keyPath: "id" });
@@ -136,7 +134,7 @@ $(document).ready(function () {
 		        	//console.log("complete");				       
 		        },
 		        failure: function(){
-		             console.log("failed");
+		             //console.log("failed");
 		             $("#output").text("A problem occured, refresh browser...");
 		        }
 

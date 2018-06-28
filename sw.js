@@ -36,7 +36,7 @@ self.addEventListener('fetch', function(event) {
 			      cache.put(event.request.url, clonedOnlineResponse);
 			    });
 
-	    		console.log("using an online response for: " + event.request.url);
+	    		//console.log("using an online response for: " + event.request.url);
     			return onlineResponse;
     		}).catch(function(e){
     			console.log(e);
@@ -44,7 +44,7 @@ self.addEventListener('fetch', function(event) {
     		
     	}
 
-    	console.log("cache found for: " + event.request.url);
+    	//console.log("cache found for: " + event.request.url);
       return cachedResponse;
     })
   );
