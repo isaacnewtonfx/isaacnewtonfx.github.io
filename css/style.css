@@ -3125,3 +3125,9 @@ h6 {
     /* make a slightly bigger shadow and maintain the initial offsets, on mouse hover */
     box-shadow: 0 4px 20px 0 rgba(0,0,0,0.2);
   }
+
+
+  .youtube-video {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
