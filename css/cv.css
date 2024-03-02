@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-body {
+body#cv-body {
   --color: rgba(30, 30, 30);
   --bgColor: rgba(245, 245, 245);
   /* min-height: 100vh; */
