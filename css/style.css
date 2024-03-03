@@ -151,8 +151,9 @@ button:focus {
 
       .header_area .navbar .nav .nav-item .nav-link {
         font: 500 16px/100px "Roboto", sans-serif;
+        font-weight: bolder;
         text-transform: uppercase;
-        color: #222222;
+        color: #003399; /* original color was #222222 */
         padding: 0px;
         display: inline-block; }
 
