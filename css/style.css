@@ -147,13 +147,17 @@ button:focus {
     border: 0px;
     border-radius: 0px; }
     .header_area .navbar .nav .nav-item {
-      margin-right: 45px; }
+      margin-right: 45px;  }
+
       .header_area .navbar .nav .nav-item .nav-link {
         font: 500 16px/100px "Roboto", sans-serif;
         text-transform: uppercase;
         color: #222222;
         padding: 0px;
         display: inline-block; }
+
+        .nav-link:hover {text-decoration: underline;}        
+
         .header_area .navbar .nav .nav-item .nav-link:after {
           display: none; }
       .header_area .navbar .nav .nav-item.submenu {
