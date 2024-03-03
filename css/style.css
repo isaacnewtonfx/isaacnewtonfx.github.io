@@ -77,7 +77,7 @@ button:focus {
   box-shadow: none; }
 
 .p_120 {
-  padding-top: 120px;
+  padding-top: 60px; /* original padding-top was 120px */
   padding-bottom: 120px; }
 
 .pad_top {
@@ -376,12 +376,12 @@ button:focus {
 .banner_area {
   position: relative;
   z-index: 1;
-  min-height: 430px; }
+  min-height: 260px; } /* the original min-height was 430px */
   .banner_area .banner_inner {
     position: relative;
     overflow: hidden;
     width: 100%;
-    min-height: 430px;
+    min-height: 260px; /* the original min-height was 430px */
     background: #f9f9ff;
     z-index: 1; }
     .banner_area .banner_inner .banner_content {
