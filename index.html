@@ -105,7 +105,7 @@
 						<div class="col-lg-6">
 							<div class="banner_content">
 								<!-- <h5>I am</h5> -->
-								<h2>Isaac Newton Kissiedu, M.Sc.</h2>
+								<h2 class="ml2">Isaac Newton Kissiedu, M.Sc.</h2>
 								<p>MULTI-INDUSTRIAL EXPERIENCE &nbsp; || &nbsp; DEPENDABLE &nbsp; || &nbsp; LEADER</p>
 								<a class="banner_btn" href="https://linkedin.com/in/isaacnewtonfx" target="_blank"> <i id="linkedin-logo" class="fa fa-linkedin-square fa-2xl"></i> &nbsp; LinkedIn Profile</a>
 							</div>
@@ -522,5 +522,33 @@
         <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
         <script src="js/gmaps.min.js"></script> -->
         <script src="js/theme.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+		<script>
+			//https://tobiasahlin.com/moving-letters/
+
+			// Wrap every letter in a span
+			var textWrapper = document.querySelector('.ml2');
+			textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+			anime.timeline({loop: false})
+			.add({
+				targets: '.ml2 .letter',
+				scale: [4,1],
+				opacity: [0,1],
+				translateZ: 0,
+				easing: "easeOutExpo",
+				duration: 950,
+				delay: (el, i) => 70*i
+			}).add({
+				targets: '.ml2',
+				opacity: 1,
+				duration: 1000,
+				easing: "easeOutExpo",
+				delay: 1000
+			});
+
+		</script>
+
     </body>
 </html>
