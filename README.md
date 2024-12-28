@@ -4,4 +4,4 @@ This repository is the source code for my personal website showcasing my profess
 
 **Author**: Isaac Newton Kissiedu
 
-**View website**: <a href='https://isaacnewtonfx.github.io' target='blank'>https://isaacnewtonfx.github.io</a>
+**View website**: <a href='https://isaacnewtonfx.github.io' target='_blank'>https://isaacnewtonfx.github.io</a>
