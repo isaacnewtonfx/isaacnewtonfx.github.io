@@ -37,7 +37,7 @@ jobs:
           PORT="${{ secrets.REMOTE_PORT }}"
           if [ -z "$PORT" ]; then PORT=22; fi
           # adjust excludes and rsync flags as needed
-          rsync -az --delete \
+          rsync -az --no-g --no-o --delete \
             --exclude='.git' \
             --exclude='.gitignore' \
             --exclude='node_modules' \
