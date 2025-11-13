@@ -1,0 +1,47 @@
+name: Deploy to VM via rsync
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: deploy-${{ github.ref }}
+      cancel-in-progress: true
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Ensure rsync is available
+        run: sudo apt-get update && sudo apt-get install -y rsync
+
+      - name: Start ssh-agent and add private key
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Add remote host to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          PORT="${{ secrets.REMOTE_PORT }}"
+          if [ -z "$PORT" ]; then PORT=22; fi
+          ssh-keyscan -p "$PORT" "${{ secrets.REMOTE_HOST }}" >> ~/.ssh/known_hosts
+        # secrets used: REMOTE_HOST, REMOTE_PORT (optional)
+
+      - name: Rsync to remote VM
+        run: |
+          PORT="${{ secrets.REMOTE_PORT }}"
+          if [ -z "$PORT" ]; then PORT=22; fi
+          # adjust excludes and rsync flags as needed
+          rsync -az --delete \
+            --exclude='.git' \
+            --exclude='.gitignore' \
+            --exclude='node_modules' \
+            --exclude='.github' \
+            --exclude='ronin-gh-pages.zip' \
+            -e "ssh -p $PORT" ./ "${{ secrets.REMOTE_USER }}"@"${{ secrets.REMOTE_HOST }}":"${{ secrets.REMOTE_PATH }}"
+        # secrets used: REMOTE_USER, REMOTE_HOST, REMOTE_PATH, REMOTE_PORT (optional)
