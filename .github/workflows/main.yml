@@ -45,3 +45,8 @@ jobs:
             --exclude='ronin-gh-pages.zip' \
             -e "ssh -p $PORT" ./ "${{ secrets.REMOTE_USER }}"@"${{ secrets.REMOTE_HOST }}":"${{ secrets.REMOTE_PATH }}"
         # secrets used: REMOTE_USER, REMOTE_HOST, REMOTE_PATH, REMOTE_PORT (optional)
+
+      - name: Set file permissions and ownership on remote VM
+        run: |
+          ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} sudo chmod 775 -R ${{ secrets.REMOTE_PATH }}
+          ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} sudo chown -R ${{ secrets.REMOTE_USER }}:${{ secrets.MANAGER_GROUP }} ${{ secrets.REMOTE_PATH }}
