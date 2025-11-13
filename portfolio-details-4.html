@@ -30,13 +30,18 @@
     </head>
 
 	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-KDEZGFRWG4"></script>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-7V9ZPRWNEQ"></script>
 	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
 
-	gtag('config', 'G-7V9ZPRWNEQ');
+		if (location.hostname === "isaacnewtonfx.github.io") {
+			gtag('config', 'G-KDEZGFRWG4');
+		} else if (location.hostname === "newtongis.com" || location.hostname === "www.newtongis.com") {
+			gtag('config', 'G-7V9ZPRWNEQ');
+		}
 	</script>
 
 	<script src="//code.tidio.co/0ywphptnlleki4c0chw0sqq66tddjl9q.js" async></script>	
