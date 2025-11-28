@@ -1,0 +1,9 @@
+services:
+  web:
+    image: nginx:stable-alpine-slim
+    container_name: personal_website
+    ports:
+      - "127.0.0.1:81:80"
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+    restart: unless-stopped
