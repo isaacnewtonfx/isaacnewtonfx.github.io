@@ -3112,6 +3112,12 @@ h6 {
    font-weight: bolder
 
 }
+#footer-headline{
+  margin-bottom: 0px;
+}
+#footer-logo{
+  margin-bottom: 15px;
+}
 
 .testimonial-profile{
   color: black !important;
