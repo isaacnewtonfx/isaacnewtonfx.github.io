@@ -237,7 +237,7 @@ ul#ul-cv li .descr::before {
   line-height: 1.4;
   /* text-transform: uppercase; */
   font-weight: 600;
-  color: #1b5f8c;
+  color: black;
   /* letter-spacing: 1.5px; */
 }
 .timeline__event__content {
